@@ -1,0 +1,20 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url('src/assets/img/death-star-star-wars-space-glow-desktop-wallpaper-4k.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1; 
+}
+
+.site-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
