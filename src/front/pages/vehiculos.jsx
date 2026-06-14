@@ -10,14 +10,14 @@ export const Vehiculos = () => {
 
         const fetchVehiculos = async () => {
             try {
-                const response = await fetch("https://swapi.info/api/vehicles");
+                const response = await fetch("https://www.swapi.tech/api/vehicles?limit=100");
                 if (!response.ok) throw new Error("Error cargando vehículos");
                 const data = await response.json();
 
-                const vehiculosAdaptados = data.map(v => {
-                    const id = v.url.split("/").filter(Boolean).pop();
-                    return { ...v, uid: id, type: "vehiculos" };
-                });
+                const vehiculosAdaptados = data.results ? data.results.map(v => ({
+                    ...v,
+                    type: "vehiculos"
+                })) : [];
 
                 dispatch({
                     type: "SET_VEHICULOS",

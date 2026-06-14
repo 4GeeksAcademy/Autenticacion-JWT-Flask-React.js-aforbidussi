@@ -15,6 +15,9 @@ import { Vehiculos } from "./pages/vehiculos";
 import { PersonajeDetalle } from "./pages/detalles.jsx";
 import { PlanetaDetalle } from "./pages/PlanetaDetalles.jsx";
 import { VehiculoDetalle } from "./pages/VehiculosDetalles.jsx";
+import { Signup } from "./components/Signup.jsx";
+import { Login } from "./components/Login.jsx";
+import { Private } from "./components/Private.jsx";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -35,6 +38,9 @@ export const router = createBrowserRouter(
       <Route path="/vehiculos/:uid" element={<VehiculoDetalle />} />
       <Route path="/planetas" element={<Planetas />} />
       <Route path="/planetas/:uid" element={<PlanetaDetalle />} />
+      <Route path="/signup" element={<Signup />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/private" element={<Private />} />
 
       <Route path="/single/:theId" element={<Single />} />  {/* Dynamic route for single items */}
       <Route path="/demo" element={<Demo />} />

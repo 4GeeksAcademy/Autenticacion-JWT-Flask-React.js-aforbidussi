@@ -8,16 +8,16 @@ export const VehiculoDetalle = () => {
     const cleanUid = uid.trim();
 
     useEffect(() => {
-        fetch(`https://swapi.info/api/vehicles/${cleanUid}`)
+        fetch(`https://www.swapi.tech/api/vehicles/${cleanUid}`)
             .then(res => {
-                if (!res.ok) throw new Error("Error en la API");
+                if (!res.ok) throw new Error("Error en la red");
                 return res.json();
             })
-            .then(data => setDetalles(data))
+            .then(data => setDetalles(data.result.properties))
             .catch(err => console.error("Error cargando detalles:", err));
     }, [cleanUid]);
 
-    if (!detalles) return <p className="text-white text-center mt-5">Escaneando motores...</p>;
+    if (!detalles) return <p className="text-white text-center mt-5">Cargando datos del vehículo...</p>;
 
     const imageURL = `/img/vehiculos/${cleanUid}.jpg`;
 

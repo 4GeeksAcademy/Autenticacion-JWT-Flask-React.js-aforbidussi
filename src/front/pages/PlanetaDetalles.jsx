@@ -9,13 +9,13 @@ export const PlanetaDetalle = () => {
     const cleanUid = uid.trim();
 
     useEffect(() => {
-        fetch(`https://swapi.info/api/planets/${cleanUid}`)
+        fetch(`https://www.swapi.tech/api/planets/${cleanUid}`)
             .then(res => {
                 if (!res.ok) throw new Error("Error en la red");
                 return res.json();
             })
             .then(data => {
-                setDetalles(data);
+                setDetalles(data.result.properties);
             })
             .catch(err => console.error(err));
     }, [cleanUid]);

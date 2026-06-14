@@ -1,9 +1,16 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
 import logoStarWars from "../assets/img/icons8-la-guerra-de-las-galaxias-480.png";
 
 export const Navbar = () => {
   const { store, dispatch } = useGlobalReducer();
+  const navigate = useNavigate();
+  const token = sessionStorage.getItem("token");
+
+  const handleLogout = () => {
+    sessionStorage.removeItem("token");
+    navigate("/");
+  };
 
   return (
     <nav className="navbar navbar-dark bg-transparent px-3">
@@ -45,6 +52,18 @@ export const Navbar = () => {
                 ))
               )}
             </ul>
+          </div>
+          <div className="d-flex align-items-center ms-3">
+            {token ? (
+              <button className="sw-btn sw-btn-red shadow" onClick={handleLogout}>
+                Cerrar Sesión
+              </button>
+            ) : (
+              <>
+                <Link to="/login" className="sw-btn sw-btn-blue shadow me-2">Iniciar Sesión</Link>
+                <Link to="/signup" className="sw-btn sw-btn-green shadow">Registro</Link>
+              </>
+            )}
           </div>
         </div>
 
